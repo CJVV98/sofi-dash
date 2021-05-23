@@ -1,0 +1,30 @@
+.main-content{
+    margin: 5%;
+}
+.card-title{
+    color: #00509F;
+    margin-left: 40%;
+}
+.material-icons{
+    color: #00509F;
+}
+
+.mat-header-cell {
+    background-color: #01509F;
+    color:white  !important; 
+}
+.buttons-user{
+    float: right;
+}
+.custom-modalbox {   
+    padding: 2px;   
+}
+.mat-column-id {
+    flex: 0 0 5%;
+}
+.mat-column-actions {
+    flex: 0 0 8%;
+}
+table {
+    width: 100%;
+}

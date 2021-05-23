@@ -1,0 +1,37 @@
+<mat-toolbar-row class="toolbar-user">
+    <span>DATOS DE ROLES </span>
+    <span class="example-spacer"></span>
+</mat-toolbar-row>
+<br />
+<div class="card" style="width:500px">
+    <form [formGroup]="formRole" #frmDatos="ngForm">
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nombre del rol" formControlName="name" minlength="3" maxlength="30"
+                pattern="[A-Za-z ]*" required>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion del rol" formControlName="description" minlength="5" maxlength="60"
+                pattern="[A-Za-z ]*" required>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Permisos</mat-label>
+
+            <mat-select formControlName="permissionsList" multiple [(ngModel)]="permissionsSelect">
+                <div class="sl-permission" required>
+                    <i class="material-icons">search</i>
+                    <input type="tel" matInput placeholder="search" style="width: 70%;"(keydown.backspace)="searchPerm($event)" (keypress)="searchPerm($event)">
+                    <br />
+                </div>         
+                <mat-option *ngFor="let permission of permissions" [value]="permission">{{permission.description}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <button mat-stroked-button color="primary"  [disabled]="formRole.invalid" (click)="add()" class="bt-add">
+            <i class="material-icons">add</i>{{edit?'Editar':'Registrar'}}</button>
+        <div class="clearfix"></div>
+    </form>
+</div>

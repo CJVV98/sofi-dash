@@ -1,0 +1,30 @@
+
+<svg style="position: absolute;" width="320" height="150" viewBox="0 0 210 120">
+  <circle cx="10" cy="40" r="70" fill="#01509F" />
+</svg>
+<img src="assets/img/logoFiscalia.jpg" width="180" class="img-fisc">
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title><img src="assets/img/Logo-SoFi_Vertical (1).png" width="100"></mat-card-title>
+    </mat-card-header>
+    <form class="example-form">
+      <mat-card-content >
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Usuario" [(ngModel)]="user.username" name="username">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Contraseña" type="password" [(ngModel)]="user.password" name="password">
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button class="btn-login" (click)="login()"> Iniciar sesión</button>
+      <br/><br/>
+      <button class="btn-remember" mat-button>Olvidaste tu contraseña</button>
+    </form>
+  </mat-card>
+</div>
+
+<mat-sidenav-container>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

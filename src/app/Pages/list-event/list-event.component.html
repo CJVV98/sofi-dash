@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title ">Listado de eventos</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Buscar por</mat-label>
+                                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <mat-table [dataSource]="dataSource" matSort>
+
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header width="80"> N° </mat-header-cell>
+                                <mat-cell *matCellDef="let j = index;"> {{j+1}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="start">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha inicio </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.start_date}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="end">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha final </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.end_date}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="place">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Lugar </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.place}} </mat-cell>
+                       
+                            </ng-container>
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="actions">
+                                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <a class="nav-link" href="javascript:void(0)" (click)="moreEvent(row)" style="display: contents;">
+                                        <i class="material-icons">zoom_in</i>
+                                    </a>
+                                    &nbsp;
+                                    <a class="nav-link" href="javascript:void(0)"  (click)="edit(row)" style="display: contents;" *ngIf="row.user != 'ldap'">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColums;"></mat-row>
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br /> <br />
+        <div class="buttons-user">
+            <button mat-stroked-button color="primary" (click)="add()">
+                <i class="material-icons">add</i>Agregar Evento</button>
+        </div>
+    </div>
+</div>
+<mat-sidenav-container>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

@@ -1,0 +1,22 @@
+input, label {
+    display: block;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    border: 1px solid black;
+    color: white;
+    background: #01509F;
+    font-size: 16px;
+}
+
+.title{
+    color:#01509F;
+    margin-left: 10%;
+}
+.item{
+    color:#01509F;  
+}
+.btn-file{
+    margin-left: 30%;
+    color:#01509F;
+ }

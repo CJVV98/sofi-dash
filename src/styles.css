@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-snack-bar-container{
+    background-color: white;
+    color: #01509F;
+    border:#01509f 3px double;
+}
+
+.mat-simple-snackbar-action {
+    color: white;
+    background: #d62738;
+}
+.mat-form-field-appearance-fill .mat-form-field-infix{
+    background-color: white;
+}
+
+
+element {
+    background: white !important;
+}
+.ng-tns-c99-2[_ngcontent-kba-c211] {
+    background-color: transparent !important;
+    padding-bottom: 0em !important;
+}
+.cdk-text-field-autofill-monitored:not(:autofill) {
+    animation: cdk-text-field-autofill-end 0s 1ms;
+}
+input.mat-input-element {
+    margin-top: -0.0625em;
+}
+.mat-input-element, .mat-input-element::-webkit-search-cancel-button, .mat-input-element::-webkit-search-decoration, .mat-input-element::-webkit-search-results-button, .mat-input-element::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+.mat-input-element {
+    font: inherit;
+    background: transparent;
+    color: currentColor;
+    border: none;
+    outline: none;
+    padding: 0;
+        padding-bottom: 0px;
+    margin: 0;
+        margin-top: 0px;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    box-sizing: content-box;
+}
+.mat-input-element {
+    caret-color: #01509f;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(255, 255, 255)
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+    background-color: #01509f;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #01509f;
+}

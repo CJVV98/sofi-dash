@@ -1,0 +1,25 @@
+<mat-toolbar-row class="toolbar-user">
+    <span>PERMISOS DE USUARIO</span>
+    <span class="example-spacer"></span>
+</mat-toolbar-row>
+<br/>
+<div class="card" style="width:300px">
+    <form [formGroup]="formPermission" #frmDatos="ngForm">
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nombre del permiso" [readonly]="edit" formControlName="name" minlength="5" maxlength="30" required >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Descripcion del permiso" formControlName="description" minlength="5" maxlength="60" pattern="[A-Za-z ]*" required>
+        </mat-form-field>
+
+
+        <button mat-stroked-button color="primary"  [disabled]="formPermission.invalid" class="bt-add" (click)="add()">
+            <i class="material-icons">add</i> 
+            {{edit ? 'Editar' : 'Agregar'}}
+        </button>
+          
+        <div class="clearfix"></div>
+    </form>
+</div>

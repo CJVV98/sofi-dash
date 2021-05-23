@@ -1,0 +1,70 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card-header>
+    <mat-card-title> 
+      <div *ngIf="edit; else addBlock">Editar evento</div>
+      <ng-template #addBlock>Agregar evento</ng-template>
+    </mat-card-title>
+  </mat-card-header>
+  <br />
+  <br />
+  <form [formGroup]="formEvent" #frmDatos="ngForm" class="example-form">
+
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="name" placeholder="Nombre del evento" type="text" class="form-control" id="name"
+        minlength="3" maxlength="40"  pattern="[A-Za-z ]*" required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <textarea matInput formControlName="information" placeholder="Detalles" type="text" class="form-control"
+        id="information" minlength="5" maxlength="100" required></textarea>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="place" placeholder="Lugar" type="text" class="form-control" id="place"
+        minlength="3" maxlength="20"  pattern="[A-Za-z ]*" required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-us">
+      <input matInput formControlName="start_date" placeholder="Fecha Inicio" type="date" class="form-control"
+        id="start_date" minlength="5" maxlength="20" required>
+    </mat-form-field>
+    &nbsp; &nbsp;
+    <mat-form-field class="input-us">
+      <input matInput formControlName="end_date" placeholder="Fecha Fin" type="date" class="form-control" id="end_date"
+        minlength="5" maxlength="20" required>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill" class="input-us">
+      <mat-label>Usuario asignado</mat-label>
+      <mat-select formControlName="user_id">
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{user.name}} &nbsp; {{user.lastname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <label id="example-radio-group-label">Estado</label>
+    &nbsp; &nbsp;
+    <mat-radio-group aria-label="Select an option" formControlName="state">
+      <mat-radio-button value="private">Privado</mat-radio-button>
+      &nbsp;
+      <mat-radio-button value="public">Publico</mat-radio-button>
+    </mat-radio-group>
+    <br /><br />
+    <div class="form-style">
+      <mat-label>Recursos</mat-label> &nbsp; &nbsp;
+      <input type="file" id="files" name="files"  (change)="loadFile($event)" >
+    </div>
+
+    <br />
+    <br />
+  
+    <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
+    &nbsp;
+    <button mat-raised-button class="bt-add" (click)="add()">
+      <div *ngIf="edit; else addBlock">Editar evento</div>
+      <ng-template #addBlock>Agregar evento</ng-template>
+    </button>
+  </form>
+</div>

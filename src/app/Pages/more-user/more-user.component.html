@@ -1,0 +1,31 @@
+<mat-toolbar-row class="toolbar-user">
+    <mat-icon>face</mat-icon>
+    &nbsp;
+    <span>DATOS DEL USUARIO</span>
+    <span class="example-spacer"></span>
+</mat-toolbar-row>
+<br />
+<br />
+<div *ngIf="user.photo.length<26; else elseBlock">
+    <img width="140" class="img-user" height="140" src="../../../assets/img/user.png"> 
+</div>
+<ng-template  #elseBlock>
+    <img width="140" class="img-user" height="140" [src]="user.photo"> 
+</ng-template >
+<mat-card><b>Usuario:</b> {{user.user}}</mat-card>
+<mat-card><b>Identificación:</b> {{user.identification}}</mat-card>
+<mat-card><b>Nombres:</b> {{user.name}} {{user.lastname}}</mat-card>
+<mat-card><b>Correo:</b> {{user.email}}</mat-card>
+<mat-card><b>Cargo:</b> {{user.title}}</mat-card>
+<mat-card><b>Telefonos:</b> {{user.phone1}} - {{user.phone2}}</mat-card>
+<mat-card><b>Dirección:</b> {{user.address}}</mat-card>
+<mat-card><b>Ciudad:</b> {{user.city}}</mat-card>
+<mat-card><b>Pais:</b> {{user.country}}</mat-card>
+<mat-card><b>Roles:</b> 
+    <div  *ngFor="let role of user.roles">
+        {{ role.name }} 
+        <label *ngIf="user.roles.length > 1">
+            ,
+        </label> 
+    </div>
+</mat-card>

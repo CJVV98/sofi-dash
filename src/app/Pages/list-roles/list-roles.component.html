@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title ">Listado de roles</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Buscar por</mat-label>
+                                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <mat-table [dataSource]="dataSource"   class="mat-elevation-z8" matSort>
+
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id" >
+                                <mat-header-cell *matHeaderCellDef mat-sort-header > N° </mat-header-cell>
+                                <mat-cell *matCellDef="let j = index;" > {{j+1}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name" >
+                                <mat-header-cell *matHeaderCellDef mat-sort-header > Nombre </mat-header-cell>
+                                <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="permissions">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Permisos </mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    
+                                    <mat-list role="list" *ngFor="let permission of element.permissions.slice(0, 5);" >    
+                                        <mat-list-item class="item-list">
+                                            <mat-icon>arrow_right</mat-icon>
+                                            {{permission.description}}
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <mat-list role="list" *ngIf="element.permissions.length>5">     
+                                        <mat-list-item  class="item-list" style="color: #01509F;">
+                                            <mat-icon>arrow_right</mat-icon>
+                                            Ver mas
+                                        </mat-list-item>
+                                    </mat-list>
+                                    <br/>
+
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="actions">
+                                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <a class="nav-link" href="javascript:void(0)" (click)="moreRole(row)" style="display: contents;">
+                                        <i class="material-icons">zoom_in</i>
+                                    </a>
+                                    &nbsp;
+                                    <a class="nav-link" href="javascript:void(0)" style="display: contents;">
+                                        <i class="material-icons">auto_delete</i>
+                                    </a>
+                                    &nbsp;
+                                    <a class="nav-link" href="javascript:void(0)" (click)="operation(true,row)" style="display: contents;">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColums;"></mat-row>
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br /> <br />
+        <div class="buttons-user">
+            <button mat-stroked-button color="primary" (click)="operation(false)">
+                <i class="material-icons">add</i>Agregar Roles</button>
+        </div>
+    </div>
+</div>
+<mat-sidenav-container>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

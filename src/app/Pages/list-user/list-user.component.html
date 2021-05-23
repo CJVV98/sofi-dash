@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title ">Listado de usuarios</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Buscar por</mat-label>
+                                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <mat-table [dataSource]="dataSource" matSort>
+
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header width="80"> N° </mat-header-cell>
+                                <mat-cell *matCellDef="let element;  let i = index"> {{i+1}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+
+
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="lastname">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.lastname}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="phone1">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.phone1}} </mat-cell>
+                            </ng-container>
+
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="actions">
+                                <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <mat-slide-toggle class="example-margin"  (change)="changeState($event, row)" [color]="color" [checked]="row.state == 'pendiente'"
+                                        [disabled]="disabled">
+                                    </mat-slide-toggle>
+                                    &nbsp;   &nbsp;
+                                    <a class="nav-link" href="javascript:void(0)" (click)="moreUser(row)" style="display: contents;">
+                                        <i class="material-icons">zoom_in</i>
+                                    </a>
+                                    &nbsp;
+                                    <a class="nav-link" href="javascript:void(0)"  (click)="edit(row)" style="display: contents;" *ngIf="row.user != 'ldap'">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColums;"></mat-row>
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="buttons-user">
+
+            <button mat-stroked-button color="primary" (click)="add()">
+                <i class="material-icons">add</i>Agregar usuario</button>
+            <button mat-stroked-button color="primary" (click)="loadFile()">
+                <i class="material-icons">file_copy</i>Cargar usuarios</button>
+
+        </div>
+    </div>
+</div>
+
+<mat-sidenav-container>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

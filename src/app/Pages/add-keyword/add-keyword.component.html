@@ -1,0 +1,12 @@
+<div class="card" style="width:300px">
+    <form [formGroup]="formKeyword" #frmDatos="ngForm">
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Palabra clave" formControlName="name" minlength="5" maxlength="30">
+        </mat-form-field>
+
+        <button mat-stroked-button color="primary" class="bt-add" (click)="add()">
+            <i class="material-icons">add</i>Registrar</button>
+        <div class="clearfix"></div>
+    </form>
+</div>

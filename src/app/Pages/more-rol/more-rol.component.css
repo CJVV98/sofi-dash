@@ -1,0 +1,10 @@
+.item-list{
+    height: 12px !important;
+}
+.mat-dialog-container{
+    padding:2px;
+}
+.toolbar-user{
+    background: #01509F;
+    color: white;
+}

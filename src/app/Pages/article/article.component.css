@@ -1,0 +1,69 @@
+.main-content{
+    margin-top: 5%;
+    margin-left: 8%;
+    margin-right: 5%;
+}
+.card-title{
+    color: #00509F;
+    margin-left: 30%;
+    font-size: 30px;
+}
+.material-icons{
+    color: #00509F;
+}
+
+.mat-header-cell {
+    background-color: #01509F;
+    color:white  !important; 
+}
+.buttons-user{
+    margin-left: 72%;
+}
+.custom-modalbox {
+    padding: 2px;
+}
+.bt-style{
+    height: 40px;
+}
+.form-style{
+    width: 78%;
+}
+.text-style{
+    height: 180px;
+}
+
+input, label {
+    display: block;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    border: 1px solid black;
+    color: white;
+    background: #01509F;
+    font-size: 16px;
+}
+
+.article-primary{
+    margin-left: 40%;
+}
+.mat-radio-button{
+    margin-right: 3%;
+}
+
+.bt-add{
+    margin-left: 75%;
+    background: #01509f;
+}
+     
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+}
+.content{
+    width: 90%;
+    display: block;
+}

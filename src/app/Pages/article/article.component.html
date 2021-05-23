@@ -1,0 +1,162 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title ">Registro de articulos</h2>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="formArticle" #frmDatos="ngForm">
+                            <table class="example-full-width" cellspacing="0" style="margin: 5%;">
+                                <tr>
+                                    <td style="width: 95%;">
+                                        <mat-icon>title</mat-icon>
+                                        &nbsp;&nbsp;
+                                        <mat-form-field appearance="fill" class="form-style">
+                                            <mat-label>Titulo</mat-label>
+                                            <input matInput formControlName="title">
+                                        </mat-form-field>
+                                        
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;">
+                                        <mat-icon>people_alt</mat-icon>
+                                        &nbsp;&nbsp;
+                                        <mat-form-field appearance="fill" class="form-style">
+                                            <mat-label>Autor</mat-label>
+                                            <input matInput formControlName="author">
+                                        </mat-form-field>
+                                      
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;">
+                                        <mat-icon>calendar_today</mat-icon>
+                                        &nbsp;&nbsp;
+                                        <mat-form-field appearance="fill" class="form-style">
+                                            <mat-label>Fecha</mat-label>
+                                            <input matInput formControlName="date">
+                                        </mat-form-field>
+                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;">
+                                        <mat-icon>read_more</mat-icon>
+                                        &nbsp;&nbsp;
+                                        <mat-form-field appearance="fill" class="form-style">
+                                            <mat-label>Resumen</mat-label>
+                                            <textarea matInput formControlName="description"></textarea>
+                                        </mat-form-field>
+                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;">
+                                        &nbsp;&nbsp;
+                                            <mat-label>Imagen primaria</mat-label> &nbsp; &nbsp;
+                                            <input type="file" id="files" name="files"  (change)="loadFile($event)" >
+                                       
+                                       
+                                    </td>
+                                </tr>
+                                <br />
+                                <br />
+                                <tr>
+                                    <td style="width: 90%;margin: 4%;">
+                                        <quill-editor class="content"  [styles]="{height: '400px'}"  formControlName="content"></quill-editor>
+
+                                    </td>
+                                </tr>
+                                
+                                <br />
+                                <br />
+                                <tr>
+                                    <td style="width: 90%;">
+                                        <mat-icon>spellcheck</mat-icon>
+                                        &nbsp;&nbsp;
+                                        <mat-form-field class="example-chip-list" class="form-style">
+                                            <mat-label>Palabras Claves</mat-label>
+                                            <mat-chip-list #chipList aria-label="Objeto selection">
+                                                <mat-chip *ngFor="let objeto of keywords" [selectable]="selectable"
+                                                    [removable]="removable" (removed)="remove(objeto)">
+                                                    {{objeto}}
+                                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                </mat-chip>
+                                                <input placeholder="New palabra..." #fruitInput
+                                                    [formControl]="objetoCtrl" [matAutocomplete]="auto"
+                                                    [matChipInputFor]="chipList"
+                                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                    (matChipInputTokenEnd)="add($event)">
+                                            </mat-chip-list>
+                                            <mat-autocomplete #auto="matAutocomplete"
+                                                (optionSelected)="selected($event)">
+                                                <mat-option *ngFor="let objeto of filteredKeyword | async"
+                                                    [value]="objeto">
+                                                    {{objeto}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                        <button mat-raised-button (click)="addKeyword()">Agregar palabra</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 90%;">
+                                        <label id="example-radio-group-label">Seleccione una session</label>
+                                        <mat-radio-group aria-label="Select an option" formControlName="type">
+                                            <mat-radio-button value="biblioteca">Biblioteca</mat-radio-button>
+                                            <mat-radio-button value="tematica">Tematica</mat-radio-button>
+                                        </mat-radio-group>
+                                    </td>
+                                </tr>
+                                <br />
+                                <tr>
+                                    <td style="width: 90%;">
+                                        <label id="example-radio-group-label">Articulo raiz</label>
+                                        <mat-radio-group aria-label="Select an option" formControlName="articleRoot"
+                                            (change)="changeRadio($event)">
+                                            <mat-radio-button value="1">Si</mat-radio-button>
+                                            <mat-radio-button value="2">No</mat-radio-button>
+                                        </mat-radio-group>
+
+                                        <mat-form-field appearance="fill" class="article-primary" *ngIf="showArticles">
+                                            <mat-label>Articulo raiz</mat-label>
+                                            <mat-select [formControl]="articleS">
+                                                <mat-option *ngFor="let article of articles" [value]="article.id">
+                                                    {{article.title}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                    </td>
+                                </tr>
+                                <br />
+                                <tr>
+                                    <td style="width: 90%;">
+                                        <label id="example-radio-group-label">Tipo de privacidad</label>
+                                        <mat-radio-group aria-label="Select an option" formControlName="privacity">
+                                            <mat-radio-button value="0">Pública</mat-radio-button>
+                                            <mat-radio-button value="1">Privada</mat-radio-button>
+                                        </mat-radio-group>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                        <button mat-raised-button color="primary" class="bt-add" (click)="addArticle()">Agregar
+                            articulo</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<br/><br/><br/>

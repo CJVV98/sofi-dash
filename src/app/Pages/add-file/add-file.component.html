@@ -1,0 +1,20 @@
+<mat-card-header>
+    <mat-card-title class="title">Agregar lista de usuarios</mat-card-title>
+</mat-card-header>
+<br />
+<mat-label>Para ingresar una lista de usuarios, siga estos pasos</mat-label>
+<br />
+&nbsp;
+<mat-label><b class="item">1.</b> Ingrese la siguiente informacion en este
+    <a href="assets/files/guiaExcel.xlsx">archivo</a>
+</mat-label>
+<br />
+&nbsp;
+<mat-label><b class="item">2.</b> Una vez diligenciado cargar el archivo</mat-label>
+<br /><br />
+<div ng-app="MyApp" ng-controller="AppCtrl" layout-margin layout-padding>
+    <div ng-app="MyApp" ng-forcontroller="AppCtrl" layout-margin layout-padding>
+    <input class="ng-hide" id="input-file-id" multiple type="file" (change)="loadFile($event)" />
+    <br/>
+    <button mat-raised-button class="btn-file"  (click)="register()">Cargar archivos</button>
+</div>

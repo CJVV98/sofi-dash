@@ -1,0 +1,79 @@
+<div class="example-container">
+    <mat-toolbar class="example-toolbar" >
+
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+      </button>
+
+        <h1 class="example-app-name"><img src="assets/img/Logo-SoFi-Transparente-Horiz.png" width="100"></h1>
+        <span class="example-spacer"></span>
+        <mat-icon class="material-icons color">
+            notifications
+        </mat-icon>
+        &nbsp; &nbsp; 
+        {{TemplateComponent.titlePage}}
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/perfil">
+                <mat-icon>account_box</mat-icon>
+                <span>Mi Perfil</span>
+            </button>
+            <button mat-menu-item (click)="sidenav.opened = false" (click)="logout()" >
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Cerrar Sesión</span>
+          </button>
+          </mat-menu>
+
+    </mat-toolbar>
+
+
+    <mat-sidenav-container class="example-sidenav-container">
+      <mat-sidenav #sidenav style="width: 200px">
+
+          <mat-divider></mat-divider>
+        <button mat-menu-item  style="cursor: pointer"  (click)="navigate('/usr/home','Principal')">
+            <mat-icon>home</mat-icon>
+            <span>Inicio</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item style="cursor: pointer"  (click)="navigate('/usr/usuario', 'Usuarios')">
+            <mat-icon>face</mat-icon>
+            <span>Usuarios</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item style="cursor: pointer"  (click)="navigate('/usr/roles', 'Roles')">
+            <mat-icon>supervisor_account</mat-icon>
+            <span>Roles</span>
+        </button>
+        <button mat-menu-item style="cursor: pointer" (click)="navigate('/usr/permisos', 'Permisos')">
+            <mat-icon>dns</mat-icon>
+            <span>Permisos</span>
+        </button>
+        <button mat-menu-item style="cursor: pointer" (click)="navigate('/usr/eventos', 'Eventos')">
+            <mat-icon>event</mat-icon>
+            <span>Eventos</span>
+        </button>
+        <button mat-menu-item style="cursor: pointer" (click)="navigate('/usr/articulos', 'Articulos')">
+            <mat-icon>file_copy</mat-icon>
+            <span>Contenidos</span>
+        </button>
+        <button mat-menu-item style="cursor: pointer" (click)="sidenav.opened = false">
+            <mat-icon>analytics</mat-icon>
+            <span>Reportes</span>
+        </button>
+        <button mat-menu-item style="cursor: pointer" (click)="navigate('/usr/notificaciones', 'Notificaciones')">
+            <mat-icon>notifications_active</mat-icon>
+            <span>Notificaciones</span>
+        </button>
+      </mat-sidenav>
+
+      <mat-sidenav-content>  
+     
+        <router-outlet  ></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>

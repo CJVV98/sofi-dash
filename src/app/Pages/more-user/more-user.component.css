@@ -1,0 +1,15 @@
+.mat-dialog-container{
+    padding:2px;
+}
+.toolbar-user{
+    background: #01509F;
+    color: white;
+}
+.mat-card {
+ padding: 2px  !important;
+}
+.img-user{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}

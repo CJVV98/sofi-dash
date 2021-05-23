@@ -1,0 +1,89 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card-header>
+    <mat-card-title>Añadir Usuario</mat-card-title>
+  </mat-card-header>
+  <br>
+  <form [formGroup]="formUser" #frmDatos="ngForm" class="example-form">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Identificacion" [readonly]="edit" formControlName="identification" type="number" id="ide"
+        pattern="[0-9]*" minlength="3" maxlength="15" required>
+
+    </mat-form-field>
+
+    <mat-form-field class="input-us">
+      <input matInput formControlName="name" placeholder="Nombre" type="text" class="form-control" id="name"
+        minlength="3" maxlength="20" pattern="[A-Za-z ]*" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field class="input-us">
+      <input matInput formControlName="lastname" placeholder="Apellido" type="text" class="form-control" id="sname"
+        minlength="3" maxlength="20" pattern="[A-Za-z ]*" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="email" placeholder="Correo" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" id="email"
+        minlength="5" maxlength="30"  [readonly]="edit" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-us">
+      <input matInput formControlName="phone1" placeholder="Telefono" type="number" class="form-control" id="phone1"
+        minlength="5" maxlength="11" pattern="[0-9]*" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field class="input-us">
+      <input matInput formControlName="phone2" placeholder="Telefono 2" type="number" class="form-control" id="phone2"
+        minlength="5" maxlength="11" pattern="[0-9]*" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="address" placeholder="Direccion" type="text" class="form-control" id="address"
+        minlength="5" maxlength="40" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="alternatename" placeholder="Nombre Alterno" type="text" class="form-control"
+        id="alternatename" minlength="5" maxlength="30" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Puesto" formControlName="tittle" type="text" class="form-control" id="tittle"
+        minlength="5" maxlength="40" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Institucion" formControlName="institution" type="text" class="form-control"
+        id="institution" minlength="5" maxlength="20" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-us">
+      <input matInput formControlName="username"  [readonly]="edit" type="text" class="form-control" id="username" minlength="5"
+        maxlength="20" placeholder="Usuario" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field class="input-us">
+      <input matInput formControlName="password" placeholder="Contraseña" type="password" class="form-control"
+        id="password" minlength="5" maxlength="15" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Roles</mat-label>
+      <mat-select formControlName="roles" multiple>
+        <mat-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <br />
+    
+
+    <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
+    &nbsp;
+    <button mat-raised-button class="bt-add" [disabled]="formUser.invalid" (click)="add()">
+      <div *ngIf="edit; else addBlock">Editar usuario</div>
+      <ng-template #addBlock>Agregar usuario</ng-template>
+    </button>
+    <br />
+    <br />
+    <br />
+
+  </form>
+</div>

@@ -1,0 +1,30 @@
+.content-home{
+   width: 100%;
+   height: 100%;
+}
+.input-search{
+    margin-left: 20%;
+    margin-top: 30%;
+    background-color: white;
+    color: black;
+    width: 60%;
+    padding-bottom: 0em !important ;
+}
+.mat-form-field-wrapper  {
+    background-color: transparent !important;
+    padding-bottom: 0em !important ;
+}
+.ng-tns-c99-2{
+    background-color: transparent !important;
+    padding-bottom: 0em !important ;
+}
+.title{
+    color: white;
+    margin-left: 35%;
+    margin-bottom: 10%;
+    font-size: 60px;
+}
+.bt-search{
+    height: 40px;
+    background-color: #01509F;
+}
