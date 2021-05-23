@@ -57,7 +57,7 @@
                             <ng-container matColumnDef="actions">
                                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                                 <mat-cell *matCellDef="let row">
-                                    <a class="nav-link" href="javascript:void(0)" style="display: contents;">
+                                    <a class="nav-link" href="javascript:void(0)" style="display: contents;" (click)="moreArticle(row)">
                                         <i class="material-icons">zoom_in</i>
                                     </a>
                                     &nbsp;

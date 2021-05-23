@@ -23,10 +23,14 @@ export class ListEventComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
   
-  constructor(private service:EventService, private serviceInfo:InfoEventService, private router:Router, public dialog: MatDialog) { }
+  constructor(private service:EventService, private serviceInfo:InfoEventService, private router:Router, public dialog: MatDialog) {
+    
+   }
 
   ngOnInit(): void {
-    this.showList();
+    setTimeout(()=>{
+      this.showList();
+     },1000);
   }
 
 

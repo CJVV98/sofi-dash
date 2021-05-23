@@ -11,7 +11,7 @@
 
     <mat-form-field class="example-full-width">
       <input matInput formControlName="name" placeholder="Nombre del evento" type="text" class="form-control" id="name"
-        minlength="3" maxlength="40"  pattern="[A-Za-z ]*" required>
+        minlength="3" maxlength="40"  required>
     </mat-form-field>
     <br />
     <mat-form-field class="example-full-width">
@@ -26,18 +26,29 @@
     </mat-form-field>
     <br />
     <mat-form-field class="input-us">
-      <input matInput formControlName="start_date" placeholder="Fecha Inicio" type="date" class="form-control"
+      <input matInput formControlName="start_date" [min]="min"   value="2019-12-07" 
+        placeholder="Fecha Inicio" type="date" class="form-control" (ngModelChange)="changeDate($event)"  
         id="start_date" minlength="5" maxlength="20" required>
     </mat-form-field>
     &nbsp; &nbsp;
     <mat-form-field class="input-us">
-      <input matInput formControlName="end_date" placeholder="Fecha Fin" type="date" class="form-control" id="end_date"
+      <input matInput formControlName="start_time" placeholder="Hora Inicio" type="time" class="form-control"
+        id="start_date" minlength="5" maxlength="20" required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-us">
+      <input matInput formControlName="end_date" [min]="minEnd"  placeholder="Fecha Fin" type="date" class="form-control" id="end_date"
         minlength="5" maxlength="20" required>
+    </mat-form-field>
+    &nbsp; &nbsp;
+    <mat-form-field class="input-us">
+      <input matInput formControlName="end_time" placeholder="Hora Fin" type="time" class="form-control"
+        id="start_date" minlength="5" maxlength="20" required>
     </mat-form-field>
     <br />
     <mat-form-field appearance="fill" class="input-us">
       <mat-label>Usuario asignado</mat-label>
-      <mat-select formControlName="user_id">
+      <mat-select formControlName="user_id" [(ngModel)]="userSelect">
         <mat-option *ngFor="let user of users" [value]="user.id">
           {{user.name}} &nbsp; {{user.lastname}}
         </mat-option>

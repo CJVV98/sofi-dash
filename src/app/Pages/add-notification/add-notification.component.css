@@ -127,11 +127,13 @@ input.example-right-align {
 }
 .bt-add{
   color: white;
-  margin-left: 48%;
   background: #01509F;
 }
 
 .bt-cancel{
   color: white;
   background: #484848;
+}
+.bt-not{
+  float: right;
 }

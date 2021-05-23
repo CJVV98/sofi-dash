@@ -36,17 +36,13 @@ export class AddNotificationComponent implements OnInit {
   }
 
   public add() {
-    this.notification.event_id = this.formNotification.value['name'];
     this.notification.details = this.formNotification.value['details'];
     this.notification.date = this.formNotification.value['date'];
-
-    /*
-      this.showMessage("Evento registrado exitosamente", "Insertar");
+    this.service.add(this.notification).subscribe(()=>{
+      this.showMessage("Notificacion registrada exitosamente", "Insertar");
     }, error => {
       this.showMessage(error, "Insertar");
     });
-
-     */
     this.initForm();
   }
 

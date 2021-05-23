@@ -16,18 +16,15 @@ export class EventService {
     return this.http.get<any>(`${this.url}events`, options);
   }
 
-  add(event:Events){
+  addEdit(event:Events, edit:boolean){
     let options=this.token.token();
-
-    return this.http.post(`${this.url}events`, event, options);
+    if(edit)
+      return this.http.put(`${this.url}events/${event.id}`, event, options);
+    else
+      return this.http.post(`${this.url}events`, event, options);
   }
 
-  edit(event:Events){
-    console.log(event);
-    console.log("entrando");
-    let options=this.token.token();
-    return this.http.put(`${this.url}events/${event.id}`, event, options);
-  }
+
  
 
 }

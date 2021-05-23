@@ -14,7 +14,7 @@ export class ListNotificationComponent implements OnInit {
 
   public notifications!: Array<Notification>;
   dataSource=  new MatTableDataSource<Notification>();
-  displayedColums: string[] = ['id',  'date', 'details' , 'actions'];
+  displayedColums: string[] = ['id',  'date', 'details' ];
   @ViewChild(MatSort, { static: true })
   sort: MatSort = new MatSort;
   @ViewChild(MatPaginator, { static: true })
@@ -47,7 +47,7 @@ export class ListNotificationComponent implements OnInit {
 
   add(){
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate([`/inicio/notificacion`]));
+      this.router.navigate([`/usr/notificacion`]));
   }
 
 }

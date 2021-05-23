@@ -29,6 +29,8 @@ import { InfoUserService } from './services/infoUser.service';
 import { MoreEventComponent } from './Pages/more-event/more-event.component';
 import { QuillModule } from 'ngx-quill';
 import { MoreRolComponent } from './Pages/more-rol/more-rol.component';
+import { MoreArticleComponent } from './Pages/more-article/more-article.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -55,7 +57,8 @@ export function tokenGetter() {
     AddNotificationComponent,
     HomeComponent,
     MoreEventComponent,
-    MoreRolComponent, 
+    MoreRolComponent,
+    MoreArticleComponent, 
   ],
   imports: [
     NgxMatColorPickerModule,
@@ -67,7 +70,9 @@ export function tokenGetter() {
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule, 
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    FroalaEditorModule.forRoot(),
+     FroalaViewModule.forRoot()
     
   ],
   providers: [

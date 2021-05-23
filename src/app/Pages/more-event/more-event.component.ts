@@ -18,6 +18,7 @@ export class MoreEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.event=this.data;   
+    console.log(this.event)
   }
   
 

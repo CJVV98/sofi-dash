@@ -15,6 +15,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { MoreUserComponent } from './Pages/more-user/more-user.component';
 import { TemplateComponent } from './Pages/template/template.component';
 import { HomeComponent } from './Pages/home/home.component';
+import { MoreArticleComponent } from './Pages/more-article/more-article.component';
 
 const routes: Routes = [
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     { path: 'articulo', component: ArticleComponent },
     { path: 'articulos', component: ListArticlesComponent },
     { path: 'mas-user', component: MoreUserComponent },
+    { path: 'mas-articulo', component: MoreArticleComponent },
     { path: 'eventos', component: ListEventComponent },
     { path: 'evento', component: AddEventComponent },
     {path: 'notificacion', component: AddNotificationComponent},

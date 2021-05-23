@@ -2,37 +2,28 @@
   <mat-card-header>
     <mat-card-title>Añadir Notificación</mat-card-title>
   </mat-card-header>
-  <br>
+  <br/><br/>
   <form [formGroup]="formNotification" #frmDatos="ngForm" class="example-form">
-
     <mat-form-field class="example-full-width">
-      <input matInput formControlName="name" placeholder="Nombre de la notificación" type="text" class="form-control" id="name"
-             minlength="3" maxlength="20" pattern="[A-Za-z ]*" required>
+      <textarea matInput formControlName="details" placeholder="Detalles" type="text" class="form-control" id="details"
+        minlength="5" maxlength="90" pattern="[A-Za-z ]*" required></textarea>
     </mat-form-field>
     &nbsp;
     <mat-form-field class="example-full-width">
       <input matInput formControlName="date" placeholder="Fecha" type="date" class="form-control" id="date"
-             minlength="5" maxlength="30" required>
+        minlength="5" maxlength="30" required>
     </mat-form-field>
 
-    <mat-form-field class="input-us">
-      <input matInput formControlName="details" placeholder="Detalles" type="text" class="form-control" id="details"
-             minlength="5" maxlength="11" pattern="[A-Za-z ]*" required>
-    </mat-form-field>
+    
     &nbsp;
-
-
-
-    <br/>
-    <br/>
-    <button mat-raised-button class="bt-add" (click)="add()">Agregar Notificación</button>
-    &nbsp;
-    <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
-
-    <br/>
-    <br/>
-    <br/>
-
+    <br />
+    <br />
+    <div class="bt-not">
+      <button mat-raised-button class="bt-add" (click)="add()">Agregar Notificación</button>
+      &nbsp;
+      <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
+    </div>
+    <br />
+    <br />
   </form>
 </div>
-

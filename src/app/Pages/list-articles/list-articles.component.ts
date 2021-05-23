@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ContentService } from 'src/app/services/content.service';
+import { InfoArticleService } from 'src/app/services/infoArticle';
 
 @Component({
   selector: 'app-list-articles',
@@ -20,7 +21,7 @@ export class ListArticlesComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
   
-  constructor(private service:ContentService, private router:Router) { }
+  constructor(private service:ContentService, private router:Router, private infoArt:InfoArticleService) { }
 
   ngOnInit(): void {
     this.showList();
@@ -50,6 +51,11 @@ export class ListArticlesComponent implements OnInit {
     this.router.navigate([`/usr/articulo`]));
   }
 
+  moreArticle(article:Article){
+    this.infoArt.setArticle(article);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+    this.router.navigate([`/usr/mas-articulo`]));
+  }
 }
 
 

@@ -1,5 +1,5 @@
 import { Resource } from "./Resource";
-
+import { Notification } from './Notification';
 
 export class Events {   
     id!: number;
@@ -11,7 +11,7 @@ export class Events {
     place!: string;
     visibility!: string;
     resources: Resource[]=[];
-    notifications!: Notification[];
+    notifications:Notification[]=[];
     user_id!:number;
 
 }

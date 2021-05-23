@@ -14,14 +14,17 @@ import { AddKeywordComponent } from '../add-keyword/add-keyword.component';
 import { MatRadioChange } from '@angular/material/radio';
 import { Article } from 'src/app/model/Article';
 import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  
   showArticles = false;
-  content='';
+  content = '';
   selectedArticle!: number;
   formArticle!: FormGroup;
   public disabled = false;
@@ -48,12 +51,13 @@ export class ArticleComponent implements OnInit {
   url: string = "";
   formResource!: FormGroup;
   file: any;
-  constructor(private router: Router,private serviceKey: ContentService, private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private serviceKey: ContentService, private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.loadKeyword();
     this.filteredKeyword = this.objetoCtrl.valueChanges.pipe(
       startWith(null),
       map((objeto: string | null) => objeto ? this._filter(objeto) : this.allKeyword.slice()));
   }
+
 
   ngOnInit(): void {
     this.initForm();
@@ -84,7 +88,6 @@ export class ArticleComponent implements OnInit {
         };
         this.keywordsCons = result.data;
         for (var i = 0; i < result.data.length; i++) {
-          console.log(result.data[i].name);
           this.allKeyword[i] = result.data[i].name;
         }
         this.keywords.push(this.allKeyword[0]);
@@ -155,44 +158,49 @@ export class ArticleComponent implements OnInit {
       if (!result) {
         return;
       };
-      this.articlesAll=result.data;
+      this.articlesAll = result.data;
       this.articles = this.articlesAll;
     });
   }
   addArticle() {
-    if(this.file!=null)
+    if (this.file != null) {
       this.getBase64(this.file);
-    this.articleReg.article_id;
-    this.articleReg.author = this.formArticle.value["author"];
-    this.articleReg.content = this.formArticle.value["content"];
-    this.articleReg.date = this.formArticle.value["date"];
-    this.articleReg.extract = this.formArticle.value["description"];
-    this.articleReg.primary_image=this.url;
-    for (let keyword of this.keywords) {
-      for (let key of this.keywordsCons) {
-        if (key.name == keyword) {
-          this.keywordSel.push(key.id);
+    }
+    setTimeout(() => {
+      if (this.showArticles)
+        this.articleReg.article_id = this.formArticle.value["articleSe"];
+      this.articleReg.author = this.formArticle.value["author"];
+      this.articleReg.content = this.formArticle.value["content"];
+      this.articleReg.date = this.formArticle.value["date"];
+      this.articleReg.extract = this.formArticle.value["description"];
+      this.articleReg.primary_image = this.url;
+      for (let keyword of this.keywords) {
+        for (let key of this.keywordsCons) {
+          if (key.name == keyword) {
+            this.keywordSel.push(key.id);
+          }
         }
       }
-    }
-    this.articleReg.keywords = this.keywordSel;
-    this.articleReg.state = this.formArticle.value["privacity"];
-    this.articleReg.title = this.formArticle.value["title"];
-    this.articleReg.total_score = 0;
-    this.articleReg.type = this.formArticle.value["type"];
-    this.articleReg.visibility = this.formArticle.value["privacity"];
-    this.serviceKey.addArticle(this.articleReg).subscribe(data => {
-      this.showMessage("Articulo registrado exitosamente", "Insertar");
-    }, error => {
-      this.showMessage(error, "Insertar");
-    });
-    this.initForm();
-    this.consultArticles();
+      this.articleReg.keywords = this.keywordSel;
+      this.articleReg.state = this.formArticle.value["privacity"];
+      this.articleReg.title = this.formArticle.value["title"];
+      this.articleReg.total_score = 0;
+      this.articleReg.type = this.formArticle.value["type"];
+      this.articleReg.visibility = this.formArticle.value["privacity"];
+      this.serviceKey.addArticle(this.articleReg).subscribe(data => {
+        this.showMessage("Articulo registrado exitosamente", "Insertar");
+      }, error => {
+        this.showMessage(error, "Insertar");
+      });
+      this.initForm();
+      this.consultArticles();
+    }, 1000);
   }
   showMessage(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
     });
+
   }
 
   loadFile(event: any) {
@@ -203,7 +211,6 @@ export class ArticleComponent implements OnInit {
   getBase64(file: any) {
 
     var image = "";
-    console.log("codi");
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async function () {
@@ -218,18 +225,17 @@ export class ArticleComponent implements OnInit {
 
   }
 
-   showData(){
-     console.log(this.formArticle.value["content"]);
-   }
+  showData() {
+    console.log(this.formArticle.value["content"]);
+  }
 
-   cancel() {
+  cancel() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
       this.router.navigate([`/usr/articulos`]));
   }
 
   searchArticle(event: any) {
     setTimeout(() => {
-      console.log(event.target.value);
       let keyword = event.target.value;
       this.articles = this.articlesAll.filter(art => art.title.includes(keyword));
     }, 100)

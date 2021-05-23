@@ -32,3 +32,6 @@ table {
 .mat-column-id {
   flex: 0 0 5%;
 }
+.mat-column-date {
+  flex: 0 0 20%;
+}
