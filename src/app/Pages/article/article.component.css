@@ -44,14 +44,13 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 .article-primary{
-    margin-left: 40%;
+    margin-left: 10%;
 }
 .mat-radio-button{
     margin-right: 3%;
 }
 
 .bt-add{
-    margin-left: 75%;
     background: #01509f;
 }
      
@@ -66,4 +65,11 @@ input[type=file]::-webkit-file-upload-button {
 .content{
     width: 90%;
     display: block;
+}
+.bt-opt{
+    float: right;
+}
+.sl-article-prim{
+    margin: 2%;
+    display: flex;
 }

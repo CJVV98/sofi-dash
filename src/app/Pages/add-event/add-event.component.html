@@ -60,9 +60,9 @@
     <br />
     <br />
   
-    <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
+    <button mat-raised-button class="bt-cancel"  (click)="cancel()">Cancelar proceso</button>
     &nbsp;
-    <button mat-raised-button class="bt-add" (click)="add()">
+    <button mat-raised-button class="bt-add"  [disabled]="formEvent.invalid" (click)="add()">
       <div *ngIf="edit; else addBlock">Editar evento</div>
       <ng-template #addBlock>Agregar evento</ng-template>
     </button>

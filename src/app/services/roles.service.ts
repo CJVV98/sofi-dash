@@ -25,5 +25,11 @@ export class RolesService {
       return this.http.post(`${this.url}roles`, rol, options);
   }
 
+  delete(id:number){
+    let options=this.token.token();
+    return this.http.delete(`${this.url}roles/${id}`, options)
+  }
+
+
 
 }

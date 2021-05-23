@@ -47,7 +47,12 @@ export class ListRolesComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  delete(id: number){
+     this.service.delete(id).subscribe(()=>{
+        this.showMessage("Proceso exitoso","Eliminar registro");
+        this.showList();
+     })
+  }
   moreRole(rol:Role){
     this.dialog.open(MoreRolComponent, {
       width: '50%',
@@ -64,6 +69,13 @@ export class ListRolesComponent implements OnInit {
       },50)
     })
   }
+
+  showMessage(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 1000,
+    });
+  }
+
 
 }
 

@@ -67,7 +67,6 @@ export class ListPermissionsComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 1000,
     });
-
   }
 
 }

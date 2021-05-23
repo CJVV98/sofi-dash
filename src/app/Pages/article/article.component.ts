@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddKeywordComponent } from '../add-keyword/add-keyword.component';
 import { MatRadioChange } from '@angular/material/radio';
 import { Article } from 'src/app/model/Article';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -37,6 +38,7 @@ export class ArticleComponent implements OnInit {
   keywords: string[] = [];
   allKeyword: string[] = [];
   articles!: Article[];
+  articlesAll!: Article[];
   @ViewChild('objetoInput')
   objetoInput!: ElementRef<HTMLInputElement>;
   @ViewChild('auto')
@@ -46,12 +48,13 @@ export class ArticleComponent implements OnInit {
   url: string = "";
   formResource!: FormGroup;
   file: any;
-  constructor(private serviceKey: ContentService, private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private router: Router,private serviceKey: ContentService, private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.loadKeyword();
     this.filteredKeyword = this.objetoCtrl.valueChanges.pipe(
       startWith(null),
       map((objeto: string | null) => objeto ? this._filter(objeto) : this.allKeyword.slice()));
   }
+
   ngOnInit(): void {
     this.initForm();
   }
@@ -152,7 +155,8 @@ export class ArticleComponent implements OnInit {
       if (!result) {
         return;
       };
-      this.articles = result.data;
+      this.articlesAll=result.data;
+      this.articles = this.articlesAll;
     });
   }
   addArticle() {
@@ -217,6 +221,19 @@ export class ArticleComponent implements OnInit {
    showData(){
      console.log(this.formArticle.value["content"]);
    }
+
+   cancel() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([`/usr/articulos`]));
+  }
+
+  searchArticle(event: any) {
+    setTimeout(() => {
+      console.log(event.target.value);
+      let keyword = event.target.value;
+      this.articles = this.articlesAll.filter(art => art.title.includes(keyword));
+    }, 100)
+  }
 }
 
 

@@ -15,11 +15,8 @@
                                         &nbsp;&nbsp;
                                         <mat-form-field appearance="fill" class="form-style">
                                             <mat-label>Titulo</mat-label>
-                                            <input matInput formControlName="title">
+                                            <input matInput formControlName="title"  minlength="5" maxlength="80" required>
                                         </mat-form-field>
-                                        
-                                    </td>
-                                    <td>
 
                                     </td>
                                 </tr>
@@ -29,9 +26,9 @@
                                         &nbsp;&nbsp;
                                         <mat-form-field appearance="fill" class="form-style">
                                             <mat-label>Autor</mat-label>
-                                            <input matInput formControlName="author">
+                                            <input matInput formControlName="author"  minlength="5" maxlength="35" pattern="[A-Za-z ]*" required>
                                         </mat-form-field>
-                                      
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -40,9 +37,9 @@
                                         &nbsp;&nbsp;
                                         <mat-form-field appearance="fill" class="form-style">
                                             <mat-label>Fecha</mat-label>
-                                            <input matInput formControlName="date">
+                                            <input matInput placeholder="yyyy-mm-dd" formControlName="date" pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" required>
                                         </mat-form-field>
-                                       
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -51,29 +48,30 @@
                                         &nbsp;&nbsp;
                                         <mat-form-field appearance="fill" class="form-style">
                                             <mat-label>Resumen</mat-label>
-                                            <textarea matInput formControlName="description"></textarea>
+                                            <textarea matInput formControlName="description" required></textarea>
                                         </mat-form-field>
-                                       
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 100%;">
                                         &nbsp;&nbsp;
-                                            <mat-label>Imagen primaria</mat-label> &nbsp; &nbsp;
-                                            <input type="file" id="files" name="files"  (change)="loadFile($event)" >
-                                       
-                                       
+                                        <mat-label>Imagen primaria</mat-label> &nbsp; &nbsp;
+                                        <input type="file" id="files" name="files" (change)="loadFile($event)" required>
+
+
                                     </td>
                                 </tr>
                                 <br />
                                 <br />
                                 <tr>
                                     <td style="width: 90%;margin: 4%;">
-                                        <quill-editor class="content"  [styles]="{height: '400px'}"  formControlName="content"></quill-editor>
+                                        <quill-editor class="content" [styles]="{height: '400px'}"
+                                            formControlName="content" ></quill-editor>
 
                                     </td>
                                 </tr>
-                                
+
                                 <br />
                                 <br />
                                 <tr>
@@ -108,7 +106,7 @@
                                 <tr>
                                     <td style="width: 90%;">
                                         <label id="example-radio-group-label">Seleccione una session</label>
-                                        <mat-radio-group aria-label="Select an option" formControlName="type">
+                                        <mat-radio-group aria-label="Select an option" formControlName="type" required>
                                             <mat-radio-button value="biblioteca">Biblioteca</mat-radio-button>
                                             <mat-radio-button value="tematica">Tematica</mat-radio-button>
                                         </mat-radio-group>
@@ -119,7 +117,7 @@
                                     <td style="width: 90%;">
                                         <label id="example-radio-group-label">Articulo raiz</label>
                                         <mat-radio-group aria-label="Select an option" formControlName="articleRoot"
-                                            (change)="changeRadio($event)">
+                                            (change)="changeRadio($event)" required>
                                             <mat-radio-button value="1">Si</mat-radio-button>
                                             <mat-radio-button value="2">No</mat-radio-button>
                                         </mat-radio-group>
@@ -127,8 +125,13 @@
                                         <mat-form-field appearance="fill" class="article-primary" *ngIf="showArticles">
                                             <mat-label>Articulo raiz</mat-label>
                                             <mat-select [formControl]="articleS">
+                                                <div class="sl-article-prim" required>
+                                                    <i class="material-icons">search</i>
+                                                    <input  matInput placeholder="search" (keydown.backspace)="searchArticle($event)" (keypress)="searchArticle($event)">
+                                                    <br />
+                                                </div> 
                                                 <mat-option *ngFor="let article of articles" [value]="article.id">
-                                                    {{article.title}}
+                                                    {{article.title.substring(0,50)}}
                                                 </mat-option>
                                             </mat-select>
                                         </mat-form-field>
@@ -139,16 +142,26 @@
                                 <tr>
                                     <td style="width: 90%;">
                                         <label id="example-radio-group-label">Tipo de privacidad</label>
-                                        <mat-radio-group aria-label="Select an option" formControlName="privacity">
+                                        <mat-radio-group aria-label="Select an option" formControlName="privacity" required>
                                             <mat-radio-button value="0">Pública</mat-radio-button>
                                             <mat-radio-button value="1">Privada</mat-radio-button>
                                         </mat-radio-group>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <br />   <br />
+                                    <div class="bt-opt">
+                                        <button mat-raised-button class="bt-cancel">Vista previa</button>   &nbsp;
+                                        <button mat-raised-button color="primary" [disabled]="formArticle.invalid"  class="bt-add" (click)="addArticle()">Agregar
+                                            articulo</button>   &nbsp;
+                                        <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>
+        
+                                        &nbsp;
+                                    </div>
+                                </tr>
                             </table>
+                        
                         </form>
-                        <button mat-raised-button color="primary" class="bt-add" (click)="addArticle()">Agregar
-                            articulo</button>
 
                     </div>
                 </div>
@@ -159,4 +172,4 @@
 
 
 
-<br/><br/><br/>
+<br /><br /><br />

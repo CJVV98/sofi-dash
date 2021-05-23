@@ -2,10 +2,10 @@
     <form [formGroup]="formKeyword" #frmDatos="ngForm">
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Palabra clave" formControlName="name" minlength="5" maxlength="30">
+            <input matInput placeholder="Palabra clave" formControlName="name" minlength="5" maxlength="30" required>
         </mat-form-field>
 
-        <button mat-stroked-button color="primary" class="bt-add" (click)="add()">
+        <button mat-stroked-button color="primary" class="bt-add" [disabled]="formKeyword.invalid" (click)="add()">
             <i class="material-icons">add</i>Registrar</button>
         <div class="clearfix"></div>
     </form>
