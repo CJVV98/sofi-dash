@@ -74,6 +74,7 @@ export class ArticleComponent implements OnInit {
       'description': new FormControl(''),
       'type': new FormControl(''),
       'articleRoot': new FormControl(''),
+      'state_act': new FormControl(''),
       'privacity': new FormControl(''),
     });
     this.formResource = this.formBuilder.group({
@@ -183,6 +184,7 @@ export class ArticleComponent implements OnInit {
       }
       this.articleReg.keywords = this.keywordSel;
       this.articleReg.state = this.formArticle.value["privacity"];
+      this.articleReg.state_act = this.formArticle.value["state_act"];
       this.articleReg.title = this.formArticle.value["title"];
       this.articleReg.total_score = 0;
       this.articleReg.type = this.formArticle.value["type"];

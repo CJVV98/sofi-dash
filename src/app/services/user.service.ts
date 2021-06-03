@@ -44,6 +44,14 @@ export class UserService {
     }
   }
 
+  uploadPhoto(){
+    let options=this.token.token();
+    let user=new User();
+    user.id=2;
+    user.photo="ertyuioiuytgrfdes";
+    return this.http.post(`${this.url}user/update/photo`, user, options);
+  }
+
   import(file:any){
     let options=this.token.token();
     return this.http.post(`${this.url}import`,file, options); 

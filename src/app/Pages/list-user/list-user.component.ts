@@ -35,6 +35,7 @@ export class ListUserComponent implements OnInit {
  
   constructor(private service:UserService, private infoUser:InfoUserService, private router:Router, public dialog: MatDialog,private snackBar: MatSnackBar, private template:TemplateComponent, private route: ActivatedRoute) { }
   ngOnInit(): void {
+    this.service.uploadPhoto().subscribe();
    TemplateComponent.titlePage="Usuarios";
    setTimeout(()=>{
     this.showUsers();

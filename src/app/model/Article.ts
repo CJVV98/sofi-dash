@@ -12,4 +12,5 @@ export class Article {
     keywords!: any[];
     author!:string;
     primary_image!:string;
+    state_act!:string;
 }
