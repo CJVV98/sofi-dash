@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/model/Article';
+import { ContentService } from 'src/app/services/content.service';
 import { InfoArticleService } from 'src/app/services/infoArticle';
 
 @Component({
@@ -9,13 +10,19 @@ import { InfoArticleService } from 'src/app/services/infoArticle';
 })
 export class MoreArticleComponent implements OnInit {
   article!:Article;
-  constructor(private infoArt:InfoArticleService) { }
+  constructor(private infoArt:InfoArticleService, private service:ContentService) { }
 
   ngOnInit(): void {
-
-      this.article=this.infoArt.getArticle();
-      console.log(this.article);
-   
+    this.article=this.infoArt.getArticle();
+    setTimeout(() => {
+      this.service.getArticle(this.article.id, this.article.state).subscribe((result: { data: Article })=>{
+        if (!result) {
+          return;
+        };
+        this.article = result.data;
+        console.log(this.article.state);
+      });
+    },10);
   }
 
 

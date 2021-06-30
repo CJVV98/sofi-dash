@@ -32,6 +32,12 @@ export class ContentService {
     let options=this.token.token();
     return this.http.get<any>(`${this.url}articles`, options);
   }
+  
+  getArticle(id:number, route:String):any{
+    let options=this.token.token();
+    return this.http.get<any>(`${this.url}articles/${route}/${id}`, options);
+  }
+
 
   
 }

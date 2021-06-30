@@ -55,7 +55,7 @@
                             <ng-container matColumnDef="actions">
                                 <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
                                 <mat-cell *matCellDef="let row">
-                                    <mat-slide-toggle class="example-margin"  (change)="changeState($event, row)" [color]="color" [checked]="row.state == 'pendiente'"
+                                    <mat-slide-toggle class="example-margin"  (change)="changeState($event, row)" [color]="color" [checked]="row.state == 'activo'"
                                         [disabled]="disabled">
                                     </mat-slide-toggle>
                                     &nbsp;   &nbsp;

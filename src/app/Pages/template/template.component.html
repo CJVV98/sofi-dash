@@ -18,7 +18,7 @@
         </button>
 
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/perfil">
+            <button mat-menu-item (click)="navigate('/usr/perfil', 'Perfil')">
                 <mat-icon>account_box</mat-icon>
                 <span>Mi Perfil</span>
             </button>
@@ -61,7 +61,7 @@
             <mat-icon>file_copy</mat-icon>
             <span>Contenidos</span>
         </button>
-        <button mat-menu-item style="cursor: pointer" (click)="sidenav.opened = false">
+        <button mat-menu-item style="cursor: pointer" (click)="navigate('/usr/reportes', 'Reportes')">
             <mat-icon>analytics</mat-icon>
             <span>Reportes</span>
         </button>

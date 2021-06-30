@@ -1,0 +1,10 @@
+<mat-card-header>
+    <mat-card-title>Reporte</mat-card-title>
+  </mat-card-header>
+  <div style="display: block">
+    <canvas baseChart
+      [data]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [chartType]="doughnutChartType">
+    </canvas>
+  </div>

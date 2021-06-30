@@ -35,7 +35,6 @@ export class ListUserComponent implements OnInit {
  
   constructor(private service:UserService, private infoUser:InfoUserService, private router:Router, public dialog: MatDialog,private snackBar: MatSnackBar, private template:TemplateComponent, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    this.service.uploadPhoto().subscribe();
    TemplateComponent.titlePage="Usuarios";
    setTimeout(()=>{
     this.showUsers();
@@ -93,11 +92,10 @@ export class ListUserComponent implements OnInit {
 
   changeState(event: MatSlideToggleChange, user:User){
     let userS=new UserState();
-    userS.state=event.checked?0:1;
+    userS.state=event.checked?1:0;
     this.service.changeState(user.id,userS).subscribe(()=>{
       this.showUsers();
     })
-    console.log('toggle', event.checked);
   }
 
 }

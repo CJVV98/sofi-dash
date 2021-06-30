@@ -31,6 +31,11 @@ import { QuillModule } from 'ngx-quill';
 import { MoreRolComponent } from './Pages/more-rol/more-rol.component';
 import { MoreArticleComponent } from './Pages/more-article/more-article.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './Pages/change-password/change-password.component';
+import { PerfilComponent } from './Pages/perfil/perfil.component';
+import { ReportComponent } from './Pages/report/report.component';
+import { ChartsModule } from 'ng2-charts';
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
@@ -58,7 +63,11 @@ export function tokenGetter() {
     HomeComponent,
     MoreEventComponent,
     MoreRolComponent,
-    MoreArticleComponent, 
+    MoreArticleComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    PerfilComponent,
+    ReportComponent, 
   ],
   imports: [
     NgxMatColorPickerModule,
@@ -72,7 +81,8 @@ export function tokenGetter() {
     HttpClientModule, 
     QuillModule.forRoot(),
     FroalaEditorModule.forRoot(),
-     FroalaViewModule.forRoot()
+     FroalaViewModule.forRoot(),
+     ChartsModule
     
   ],
   providers: [

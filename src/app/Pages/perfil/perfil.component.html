@@ -1,0 +1,94 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <br /><br />
+  <div class="wrapper">
+    <div class="one">
+      <table class="tb-info">
+        <tr>
+          <td colspan="3" class="title-table">
+            Datos basicos
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="5">
+            <img [src]="user.photo"
+              class="imgPerfil" />
+          </td>
+          <td>Identificacion: </td>
+          <td>{{user.identification}}</td>
+        </tr>
+        <tr>
+          <td>Nombres: </td>
+          <td>{{user.name +" "+user.lastname}}</td>
+        </tr>
+        <tr>
+          <td>Correo: </td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>Pais: </td>
+          <td>{{user.country==undefined?"":user.country}}</td>
+        </tr>
+        <tr>
+          <td>Ciudad: </td>
+          <td>{{user.city==undefined?"":user.city}}</td>
+        </tr>
+
+      </table>
+    </div>
+    <div class="two">
+      <table class="tb-info">
+        <tr>
+          <td colspan="3" class="title-table">
+            Datos laborales
+          </td>
+        </tr>
+        <tr>
+          <td>Institucion: </td>
+          <td>{{user.institution==undefined?"Ninguno":user.institution}}</td>
+        </tr>
+        <tr>
+          <td>Puesto: </td>
+          <td>{{user.title==undefined?"Ninguno":user.title}}</td>
+        </tr>
+        <tr>
+          <td>Tipo de usuario: </td>
+          <td>{{user.user}}</td>
+        </tr>
+        <tr>
+          <td>Roles: </td>
+          <td>
+            <div *ngFor="let role of user.roles">
+              {{ role.name }}
+              <label *ngIf="user.roles.length > 1">
+                ,
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Nombre Alterno: </td>
+          <td>{{user.alternatename}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="five">
+      <table class="tb-info">
+        <tr>
+          <td colspan="3" class="title-table">
+            Datos de usuario
+          </td>
+        </tr>
+        <tr>
+          <td>Usuario: </td>
+          <td>{{user.username}}</td>
+        </tr>
+        <tr>
+          <td>Tipo de usuario: </td>
+          <td>{{user.user}}</td>
+        </tr>
+        </table>
+    </div>
+  
+  </div>
+</div>

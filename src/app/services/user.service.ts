@@ -30,6 +30,7 @@ export class UserService {
   }
 
   consultUser(id:number):any{
+    console.log(id);
     let options=this.token.token();
     return this.http.get<any>(`${this.url}users/${id}`, options);;
   }
@@ -47,9 +48,7 @@ export class UserService {
   uploadPhoto(){
     let options=this.token.token();
     let user=new User();
-    user.id=2;
-    user.photo="ertyuioiuytgrfdes";
-    return this.http.post(`${this.url}user/update/photo`, user, options);
+    return this.http.post(`${this.url}user/update`, user, options);
   }
 
   import(file:any){
@@ -67,5 +66,29 @@ export class UserService {
      return this.http.put(`${this.url}users/${id}`, roles, options)
   }
   
+  forgotPassword(email: string){
+    let body = {
+      "usermail": email
+    };
+    return this.http.post(`${this.url}sendForgotPasswordMail`, body);
+  }
+  verifyCode(code: number, idUser: number) {
+    let body = {
+      "confirmationcode": code,
+      "userid": idUser
+    };
+    return this.http.post(`${this.url}confirmCodeRestorePassword`, body);
+
+  }
+  changePassword(idUser: number, password: string){
+    console.log(password);
+    let body = {
+      "userid": idUser,
+      "usernewpassword": password,
+      "userconfirmpassword": password,
+    };
+    return this.http.post(`${this.url}saveNewPassword`, body);
+
+  }
 
 }

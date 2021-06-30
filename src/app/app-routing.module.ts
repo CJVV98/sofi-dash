@@ -16,12 +16,19 @@ import { MoreUserComponent } from './Pages/more-user/more-user.component';
 import { TemplateComponent } from './Pages/template/template.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { MoreArticleComponent } from './Pages/more-article/more-article.component';
+import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './Pages/change-password/change-password.component';
+import { PerfilComponent } from './Pages/perfil/perfil.component';
+import { ReportComponent } from './Pages/report/report.component';
 
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'recuperar', component: ForgotPasswordComponent },
+  { path: 'actualizarcont/:token', component: ChangePasswordComponent },
   { path: 'usr', component: TemplateComponent, children : [
+    { path: 'perfil', component: PerfilComponent },
     { path: 'home', component: HomeComponent },
     { path: 'usuario', component: ListUserComponent },
     { path: 'registeru', component: AddUserComponent },
@@ -35,6 +42,7 @@ const routes: Routes = [
     { path: 'mas-articulo', component: MoreArticleComponent },
     { path: 'eventos', component: ListEventComponent },
     { path: 'evento', component: AddEventComponent },
+    { path: 'reportes', component: ReportComponent },
     {path: 'notificacion', component: AddNotificationComponent},
     {path: 'notificaciones', component: ListNotificationComponent},
 
