@@ -74,7 +74,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   goBack() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-    this.router.navigate([`/recuperar`]));
+    this.router.navigate([`/login`]));
   }
   
   searchCode(event: any) {
@@ -83,7 +83,7 @@ export class ForgotPasswordComponent implements OnInit {
     setTimeout(() => {
       this.continueChange=false;
        if(code.length==4){
-          this.service.verifyCode(Number(code),102).subscribe((data:any)=>{
+          this.service.verifyCode(Number(code),this.userId).subscribe((data:any)=>{
             let error:string=data.error;
              if(error.length<3){
               this.formChange.controls['code'].disable();

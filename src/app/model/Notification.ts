@@ -1,6 +1,6 @@
 export class Notification {  
     id!:number; 
     event_id!: string;
-    date!: String;
+    date!: string;
     details!: string;
 }

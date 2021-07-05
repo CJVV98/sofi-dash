@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ import { MoreEventComponent } from '../more-event/more-event.component';
 })
 export class ListEventComponent implements OnInit {
   public events!: Array<Events>;
+  now:Date=new Date();
   dataSource=  new MatTableDataSource<Events>();
   displayedColums: string[] = ['id', 'name', 'start','end', 'place', 'actions'];
   @ViewChild(MatSort, { static: true })
@@ -23,7 +25,7 @@ export class ListEventComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
   
-  constructor(private service:EventService, private serviceInfo:InfoEventService, private router:Router, public dialog: MatDialog) {
+  constructor(private service:EventService, private serviceInfo:InfoEventService, private router:Router,  private snackBar: MatSnackBar, private dialog: MatDialog) {
     
    }
 
@@ -72,6 +74,25 @@ export class ListEventComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
     this.router.navigate([`/usr/evento`]));
   }
+
+  remove(id:number){
+    this.service.remove(id).subscribe(data => {
+      this.showMessage("Operacion exitosa", " Eliminar evento");
+      this.showList();
+    });
+  }
+
+  showMessage(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
+  validDate(date:string):any{
+    console.log(date,new Date(date)>=new Date(), Date.parse(date))
+     return new Date(date)>=new Date();
+  }
+
 }
 
 

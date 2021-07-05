@@ -24,7 +24,10 @@ export class EventService {
       return this.http.post(`${this.url}events`, event, options);
   }
 
-
+  remove(id:number){
+    let options=this.token.token();
+    return this.http.delete(`${this.url}events/${id}`, options);
+  }
  
 
 }

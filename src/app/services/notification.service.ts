@@ -18,7 +18,6 @@ export class NotificationService {
 
   add(notification: Notification){
     let options=this.token.token();
-    notification.event_id="0";
     return this.http.post(`${this.url}notifications`, notification,options);
   }
 

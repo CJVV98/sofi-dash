@@ -25,7 +25,9 @@ export class AddRoleComponent implements OnInit {
   formRole!: FormGroup;
 
   ngOnInit(): void {
+
     this.edit = this.data.edit;
+    console.log(this.edit);
     this.role = this.data.role;
     this.showPermission();
     this.initForm();
@@ -53,7 +55,7 @@ export class AddRoleComponent implements OnInit {
   }
   add() {
     let roleAdd = new Role();
-    if(!this.edit){
+    if(this.edit){
       roleAdd.name = this.formRole.value['name'];
     }else{
       roleAdd.id=this.role.id;
