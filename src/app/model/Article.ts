@@ -7,7 +7,7 @@ export class Article {
     content!: string;
     state!:string;
     type!:string;
-    visibility!:number;
+    visibility!:string;
     total_score!:number;
     keywords!: any[];
     author!:string;

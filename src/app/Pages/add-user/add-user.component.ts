@@ -92,8 +92,8 @@ export class AddUserComponent implements OnInit {
     this.user.phone2 = this.formUser.value['phone2'];
     this.user.address = this.formUser.value['address'];
     this.user.alternatename = this.formUser.value['alternatename'];
-    this.user.password = this.formUser.value['password'];
     this.user.roles= this.formUser.value['roles'];
+    if(!this.edit) this.user.password = this.formUser.value['password'];
     this.service.save(this.user, this.edit).subscribe(data => {    
       let message=this.edit?"editado": "registrado";  
       this.showMessage("Usuario "+message+" exitosamente", "Insertar");

@@ -7,10 +7,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleChildren } from 'src/app/model/ArticleChildren';
 import { User } from 'src/app/model/User';
 import { UserState } from 'src/app/model/UserState';
 import { InfoUserService } from 'src/app/services/infoUser.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment.prod';
 import { AddFileComponent } from '../add-file/add-file.component';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { MoreUserComponent } from '../more-user/more-user.component';
@@ -35,10 +37,11 @@ export class ListUserComponent implements OnInit {
  
   constructor(private service:UserService, private infoUser:InfoUserService, private router:Router, public dialog: MatDialog,private snackBar: MatSnackBar, private template:TemplateComponent, private route: ActivatedRoute) { }
   ngOnInit(): void {
+
    TemplateComponent.titlePage="Usuarios";
    setTimeout(()=>{
     this.showUsers();
-   },100);
+   },1000);
    
   }
   ngOnChanges() {

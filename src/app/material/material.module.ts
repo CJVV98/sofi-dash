@@ -22,7 +22,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
   ],
@@ -49,7 +49,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonToggleModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTabsModule
     
   ], exports: [
     MatButtonModule,
@@ -73,7 +74,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonToggleModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTabsModule
     
   ]
 })

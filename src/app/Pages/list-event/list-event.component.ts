@@ -89,7 +89,6 @@ export class ListEventComponent implements OnInit {
   }
 
   validDate(date:string):any{
-    console.log(date,new Date(date)>=new Date(), Date.parse(date))
      return new Date(date)>=new Date();
   }
 

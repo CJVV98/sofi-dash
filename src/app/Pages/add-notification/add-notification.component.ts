@@ -18,7 +18,7 @@ import {NotificationService} from 'src/app/services/notification.service';
 export class AddNotificationComponent implements OnInit {
   events!: Events[];
   formNotification!: FormGroup;
-
+  min!: string;
   constructor(private router: Router, private service: NotificationService, private snackBar: MatSnackBar, 
       private dialogo: MatDialog, private eventService:EventService) {
   }
@@ -28,6 +28,7 @@ export class AddNotificationComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.consultEvents();
+    this.min = new Date().toISOString().substring(0, 10);
   }
 
   public initForm(): void {

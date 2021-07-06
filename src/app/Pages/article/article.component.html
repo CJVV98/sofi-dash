@@ -37,7 +37,7 @@
                                         &nbsp;&nbsp;
                                         <mat-form-field appearance="fill" class="form-style">
                                             <mat-label>Fecha</mat-label>
-                                            <input matInput placeholder="yyyy-mm-dd" formControlName="date" type="date" value="2021-05-05" required>
+                                            <input  [max]="min"  matInput placeholder="yyyy-mm-dd" formControlName="date" type="date" value="2021-05-05" required>
                                         </mat-form-field>
 
                                     </td>
@@ -160,7 +160,7 @@
                                 <tr>
                                     <br />   <br />
                                     <div class="bt-opt">
-                                        <button mat-raised-button class="bt-cancel">Vista previa</button>   &nbsp;
+                                         &nbsp;
                                         <button mat-raised-button color="primary" [disabled]="formArticle.invalid"  class="bt-add" (click)="addArticle()">Agregar
                                             articulo</button>   &nbsp;
                                         <button mat-raised-button class="bt-cancel" (click)="cancel()">Cancelar proceso</button>

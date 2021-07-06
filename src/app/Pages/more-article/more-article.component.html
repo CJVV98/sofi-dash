@@ -1,13 +1,29 @@
-<div class="content">   
+<div >
+    <button mat-button *ngFor="let article of articleConsult" (click)="moreArticle(article)">{{article.title}} > </button>
+</div>
+<div class="content">
     <div class="title">
         <h1 class="title-prim"> {{article.title}}</h1>
         <h3>{{article.author}}</h3>
         <h3>{{article.date}}</h3>
     </div>
-
-    <br/>
-    <div [innerHTML]="article.content">
-        
+    <br />
+    <div [innerHTML]="article.content" class="justify-article">
     </div>
+    <div *ngIf="articleChildren.length>0">
+        <br />
+        <h3><b>Subarticulos</b></h3>
+        <mat-table [dataSource]="dataSource" matSort>
 
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
+                <mat-cell *matCellDef="let element">   <button mat-button (click)="moreArticle(element)">{{element.title}} </button></mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColums"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColums;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    </div>
 </div>

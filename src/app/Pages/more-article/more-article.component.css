@@ -8,3 +8,38 @@
 .title-prim{
     text-transform: uppercase;
 }
+.justify-article{
+    text-align:justify;
+	text-justify:inter-word;
+}
+.main-content{
+    margin: 5%;
+}
+.card-title{
+    color: #00509F;
+    margin-left: 40%;
+}
+.material-icons{
+    color: #00509F;
+}
+
+.mat-header-cell {
+    background-color: #01509F;
+    color:white  !important; 
+}
+.buttons-user{
+    margin-left: 85%;
+}
+
+.mat-cell{
+    display: initial;
+}
+mat-nav-list.list-horizontal {
+  padding: 0;
+  
+}
+
+mat-nav-list.list-horizontal.mat-list-item {
+    float: right;
+  }
+  

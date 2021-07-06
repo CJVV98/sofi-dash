@@ -48,7 +48,7 @@
     <br />
     <mat-form-field appearance="fill" class="input-us">
       <mat-label>Usuario asignado</mat-label>
-      <mat-select formControlName="user_id" [(ngModel)]="userSelect">
+      <mat-select formControlName="user_id" [(ngModel)]="userSelect" required>
         <mat-option *ngFor="let user of users" [value]="user.id">
           {{user.name}} &nbsp; {{user.lastname}}
         </mat-option>
@@ -57,7 +57,7 @@
     &nbsp;&nbsp;
     <label id="example-radio-group-label">Estado</label>
     &nbsp; &nbsp;
-    <mat-radio-group aria-label="Select an option" formControlName="state">
+    <mat-radio-group aria-label="Select an option" formControlName="state" required>
       <mat-radio-button value="private">Privado</mat-radio-button>
       &nbsp;
       <mat-radio-button value="public">Publico</mat-radio-button>
@@ -65,7 +65,7 @@
     <br /><br />
     <div class="form-style">
       <mat-label>Recursos</mat-label> &nbsp; &nbsp;
-      <input type="file" id="files" name="files"  (change)="loadFile($event)" >
+      <input type="file" id="files" name="files"  (change)="loadFile($event)" required>
     </div>
 
     <br />

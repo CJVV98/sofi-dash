@@ -16,6 +16,12 @@ export class EventService {
     return this.http.get<any>(`${this.url}events`, options);
   }
 
+
+  consultID(id:number):any{
+    let options=this.token.token();
+    return this.http.get<any>(`${this.url}events/${id}`, options);
+  }
+
   addEdit(event:Events, edit:boolean){
     let options=this.token.token();
     if(edit)

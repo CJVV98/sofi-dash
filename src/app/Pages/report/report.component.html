@@ -1,10 +1,49 @@
-<mat-card-header>
-    <mat-card-title>Reporte</mat-card-title>
-  </mat-card-header>
-  <div style="display: block">
-    <canvas baseChart width="400"
-      [data]="doughnutChartData"
-      [labels]="doughnutChartLabels"
-      [chartType]="doughnutChartType">
-    </canvas>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h2 class="card-title ">REPORTES</h2>
+          </div>
+          <div class="card-body">
+            <mat-grid-list cols="2" rowHeight="2:1">
+              <mat-grid-tile>
+                <canvas baseChart style="width: 107px; height: 107px;"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType">
+              </canvas>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <canvas baseChart style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType">
+                </canvas>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <canvas baseChart style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType">
+                </canvas>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <canvas baseChart style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType">
+                </canvas>
+              </mat-grid-tile>
+            </mat-grid-list>
+  
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br /> <br />
+  
   </div>
+</div>

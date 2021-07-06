@@ -1,0 +1,14 @@
+.main-content{
+    margin: 5%;
+}
+.card-title{
+    color: #00509F;
+    margin-left: 50%;
+}
+.material-icons{
+    color: #00509F;
+}
+
+.custom-modalbox {   
+    padding: 2px;   
+}

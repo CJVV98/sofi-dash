@@ -25,6 +25,7 @@ export class ArticleComponent implements OnInit {
   
   showArticles = false;
   content = '';
+  min!: string;
   selectedArticle!: number;
   formArticle!: FormGroup;
   public disabled = false;
@@ -60,6 +61,7 @@ export class ArticleComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.min = new Date().toISOString().substring(0, 10);
     this.initForm();
   }
 

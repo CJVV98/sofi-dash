@@ -61,9 +61,11 @@
                                         <i class="material-icons">zoom_in</i>
                                     </a>
                                     &nbsp;
-                                    <a class="nav-link" href="javascript:void(0)" style="display: contents;">
-                                        <i class="material-icons">auto_delete</i>
-                                    </a>
+                                    <mat-slide-toggle class="example-margin"  (change)="changeVisibility($event, row)" [color]="color" [checked]="row.visibility == '1'"
+                                    >
+                                    </mat-slide-toggle>
+                                    &nbsp;
+                                   
                                 </mat-cell>
                             </ng-container>
 

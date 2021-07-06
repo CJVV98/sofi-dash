@@ -1,11 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
+import { ArticleChildren } from 'src/app/model/ArticleChildren';
 import { ContentService } from 'src/app/services/content.service';
 import { InfoArticleService } from 'src/app/services/infoArticle';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-list-articles',
@@ -20,10 +24,11 @@ export class ListArticlesComponent implements OnInit {
   sort: MatSort = new MatSort;
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
-  
+  color: ThemePalette = 'primary';
   constructor(private service:ContentService, private router:Router, private infoArt:InfoArticleService) { }
 
   ngOnInit(): void {
+    environment.mapArticle=new Array<ArticleChildren>();
     this.showList();
   }
 
@@ -56,6 +61,15 @@ export class ListArticlesComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
     this.router.navigate([`/usr/mas-articulo`]));
   }
+
+  changeVisibility(event: MatSlideToggleChange, user:Article){
+    let article=new Article;
+    article.visibility=event.checked?"1":"0";
+    this.service.editVisibilityArticle(user.id,article.visibility).subscribe(()=>{
+      this.showList();
+    })
+  }
+
 }
 
 

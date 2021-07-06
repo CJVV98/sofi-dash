@@ -35,9 +35,17 @@ export class ContentService {
   
   getArticle(id:number, route:String):any{
     let options=this.token.token();
-    return this.http.get<any>(`${this.url}articles/${route}/${id}`, options);
+    return this.http.get<any>(`${this.url}articles/${id}`, options);
   }
 
+
+  editVisibilityArticle(id:number, visibility:string){
+    let options=this.token.token();
+    let body = {
+      "visibility": visibility,
+    };
+    return this.http.put(`${this.url}articles/${id}`, body, options);
+  }
 
   
 }
