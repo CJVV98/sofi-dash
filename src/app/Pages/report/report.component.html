@@ -6,33 +6,40 @@
           <div class="card-header card-header-danger">
             <h2 class="card-title ">REPORTES</h2>
           </div>
+          <br/><br/><br/>
           <div class="card-body">
             <mat-grid-list cols="2" rowHeight="2:1">
               <mat-grid-tile>
-                <canvas baseChart style="width: 107px; height: 107px;"
-                [data]="doughnutChartData"
+                <canvas baseChart [colors]="colors" style="width: 107px; height: 107px;"
+                [data]="doughnutChartData" [options]="doughnutChartOptions" 
                 [labels]="doughnutChartLabels"
                 [chartType]="doughnutChartType">
               </canvas>
               </mat-grid-tile>
               <mat-grid-tile>
-                <canvas baseChart style="width: 107px; height: 107px;"
-                  [data]="doughnutChartData"
-                  [labels]="doughnutChartLabels"
+                <canvas baseChart [colors]="colors" style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData1" [options]="doughnutChartOptions1"
+                  [labels]="doughnutChartLabels1"
+                  [chartType]="doughnutChartType">
+                </canvas>
+                
+              </mat-grid-tile>
+            </mat-grid-list>
+            <br/><br/>
+              <mat-grid-list cols="2" rowHeight="2:1">
+              <mat-grid-tile>
+                <br/><br/>
+                <canvas baseChart  [colors]="colors" style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData3" [options]="doughnutChartOptions3"
+                  [labels]="doughnutChartLabels3"
                   [chartType]="doughnutChartType">
                 </canvas>
               </mat-grid-tile>
               <mat-grid-tile>
-                <canvas baseChart style="width: 107px; height: 107px;"
-                  [data]="doughnutChartData"
-                  [labels]="doughnutChartLabels"
-                  [chartType]="doughnutChartType">
-                </canvas>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                <canvas baseChart style="width: 107px; height: 107px;"
-                  [data]="doughnutChartData"
-                  [labels]="doughnutChartLabels"
+                <br/><br/>
+                <canvas baseChart  [colors]="colors" style="width: 107px; height: 107px;"
+                  [data]="doughnutChartData2" [options]="doughnutChartOptions2"
+                  [labels]="doughnutChartLabels2"
                   [chartType]="doughnutChartType">
                 </canvas>
               </mat-grid-tile>

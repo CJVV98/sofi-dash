@@ -12,10 +12,11 @@ export class ReportService {
   constructor(private http: HttpClient, private token:Token) { }
 
   consultScore(id:number):any{
+    let options=this.token.token();
     let body = {
-        "user_id": id
+        "userid": id
       };
-      return this.http.post(`${this.url}articlesScoreReport`, body);
+      return this.http.post(`${this.url}articlesScoreReport`, body, options);
   }
 
   add(notification: Notification){
@@ -23,4 +24,26 @@ export class ReportService {
     return this.http.post(`${this.url}notifications`, notification,options);
   }
 
+  consultFavorite(id:number):any{
+    let options=this.token.token();
+    let body = {
+        "userid": id
+      };
+      return this.http.post(`${this.url}favoritesReport`, body, options);
+ 
+  }
+
+
+  consultUser(id:number):any{
+    let options=this.token.token();
+    let body = {
+        "userid": id
+      };
+      return this.http.post(`${this.url}usersRegisteredReport`, body, options);
+  }
+
+  consultKeyword(id:number):any{
+    let options=this.token.token();
+    return this.http.get<any>(`${this.url}keywordsArticles`, options);
+  }
 }

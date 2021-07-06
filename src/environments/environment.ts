@@ -2,8 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { ArticleChildren } from "src/app/model/ArticleChildren";
+
 export const environment = {
   production: false,
+  mapArticle:new Array<ArticleChildren>(),
   HOST: 'https://sofi.inkdigital.co/',
 };
 
